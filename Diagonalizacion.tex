@@ -1,0 +1,114 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{vmargin}
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{0.8cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
+
+
+\title{Estudio de la diagonalización de una matriz 4x4}
+\author{Ignacio Garach}
+\date{8 de marzo de 2019}
+\begin{document}
+
+\maketitle
+
+
+
+$$
+A=\begin{pmatrix}
+3&3&0&1\\
+-1&-1&0&-1\\
+1&2&1&1\\
+2&4&0&3\\
+\end{pmatrix}
+$$
+
+Para obtener los valores propios, calculamos las raíces del polinomio característico.
+
+$$
+\begin{vmatrix}
+3-\lambda &3&0&1 \\
+-1&-1-\lambda &0&-1 \\
+1&2&1-\lambda &1 \\
+2&4&0&3-\lambda \\
+\end{vmatrix}=0
+$$
+
+En efecto, desarrollando por la tercera columna se tiene:
+$$
+(1-\lambda)\begin{vmatrix}
+3-\lambda &3&1\\
+-1&-1-\lambda &-1\\
+2&4&3-\lambda\\
+\end{vmatrix}=0
+$$
+
+$$
+P_A(\lambda)=\lambda^4-6\lambda^3+13\lambda^2-12\lambda+4=0
+$$
+
+Factorizamos mediante la regla de Ruffini, sabemos que 1 será raíz.
+\\
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline 
+ & 1 & -6 & 13 & -12 & 4 \\
+\hline 
+1 &  & 1 & -5 & 8 & -4 \\ 
+\hline 
+ & 1 & -5 & 8 & -4 & 0 \\ 
+\hline 
+1 &  & 1 & -4 & 4 &  \\ 
+\hline 
+ & 1 & -4 & 4 & 0 &  \\ 
+\hline 
+2 &  & 2 & -4 &  &  \\ 
+\hline 
+ & 1 & -2 & 0 &  &  \\ 
+\hline 
+\end{tabular}
+$$
+\lambda_1=1 \hspace*{1cm} a_{\lambda_1}=2 \hspace*{1cm} \lambda_2=2 \hspace*{1cm} a_{\lambda_2}=2
+$$
+\\
+Al tener 2 valores propios con multiplicidad algebraica 2, aún no podemos afirmar que sea diagonalizable. Debemos comprobar que las multiplicidades geométricas coincidan con las algebraicas, en cuyo caso será diagonalizable.
+\\
+$$
+g_{\lambda_1}=4-rango\begin{pmatrix}
+2 & 3 & 0 & 1 \\ 
+-1 & -2 & 0 & -1 \\ 
+1 & 2 & 0 & 1 \\ 
+2 & 4 & 0 & 2
+\end{pmatrix}=2=a_{\lambda_1}
+$$
+$$
+g_{\lambda_2}=4-rango\begin{pmatrix}
+1 & 3 & 0 & 1 \\ 
+-1 & -3 & 0 & -1 \\ 
+1 & 2 & -1 & 1 \\ 
+2 & 4 & 0 & 1
+\end{pmatrix}=1\neq a_{\lambda_2} 
+$$
+\\
+
+Al no coincidir las multiplicidades del segundo valor propio, falla el criterio general de diagonalización, luego A no es diagonalizable.
+\end{center}
+
+
+
+
+
+
+
+
+
+\end{document}
